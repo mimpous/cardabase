@@ -1,0 +1,12 @@
+docker search mariadb
+docker pull mariadb/server:10.4
+docker run --name test -e MYSQL_ROOT_PASSWORD=test -p 3306:3306 -d mariadb/server:10.4
+
+docker ps
+
+docker exec -it 14e082fb82b7  mysql -uroot -p
+CREATE USER 'test'@'172.17.0.1' IDENTIFIED BY 'test';
+GRANT ALL PRIVILEGES ON *.* TO 'test'@'172.17.0.1' WITH GRANT OPTION;
+
+ 
+create database test;
